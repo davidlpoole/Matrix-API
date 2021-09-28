@@ -1,0 +1,15 @@
+GET http://localhost:3001/api/courses
+###
+GET http://localhost:3001/api/courses/61539fb326e19b29022677f8
+###
+DELETE http://localhost:3001/api/courses/6153a231524bde2ad5bf5b5c
+###
+POST http://localhost:3001/api/courses/
+content-type: application/json
+
+{
+    "name": "General H&S Induction2",
+    "category": "General",
+    "provider": "Internal",
+    "duration": "30"
+}
