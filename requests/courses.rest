@@ -8,8 +8,20 @@ POST http://localhost:3001/api/courses/
 content-type: application/json
 
 {
-    "name": "General H&S Induction2",
-    "category": "General",
+    "name": "Animal Welfare AM/PM",
+    "category": "Annual Refresher",
     "provider": "Internal",
-    "duration": "30"
+    "duration": "30",
+    "expiry": "365"
+}
+###
+PUT http://localhost:3001/api/courses/6153a8b3e3e8ae2cf6b00657
+content-type: application/json
+
+{
+    "name": "Animal Welfare AM/PM",
+    "category": "Annual Refresher",
+    "provider": "Internal",
+    "duration": "90",
+    "expiry": "365"
 }

@@ -31,6 +31,8 @@ coursesRouter.post('/', async (request, response) => {
     provider: body.provider,
     expiry: body.expiry || null,
     duration: body.duration,
+    dateAdded: Date.now,
+    dateUpdated: Date.now
   })
 
   if (!course.name) {
@@ -45,26 +47,29 @@ coursesRouter.post('/', async (request, response) => {
   }
 })
 
-// coursesRouter.put('/:id', async (request, response) => {
-//   const body = request.body
-//   if (!request.token) {
-//     return response.status(401).json({ error: 'token missing or invalid' })
-//   }
-//   const courseToUpdate = await Course
-//     .findById(request.params.id)
-//     // .populate('user', { username: 1 })
-//   if (request.user.username.toString() === courseToUpdate.user.username) {
-//     const updatedCourse = {
-//       title: body.title,
-//       url: body.url,
-//       likes: body.likes
-//     }
-//     const returnedCourse = await Course.findByIdAndUpdate(request.params.id, updatedCourse, { new: true })
-//     response.json(returnedCourse)
-//   } else {
-//     return response.status(401).json({ error: 'Unauthorized' })
-//   }
-// })
+coursesRouter.put('/:id', async (request, response) => {
+  const body = request.body
+  // if (!request.token) {
+  //   return response.status(401).json({ error: 'token missing or invalid' })
+  // }
+  const courseToUpdate = await Course
+    .findById(request.params.id)
+  // .populate('user', { username: 1 })
+  // if (request.user.username.toString() === courseToUpdate.user.username) {
+  const updatedCourse = {
+    name: body.name,
+    category: body.category,
+    provider: body.provider,
+    expiry: body.expiry || null,
+    duration: body.duration,
+    dateUpdated: Date.now()
+  }
+  const returnedCourse = await Course.findByIdAndUpdate(request.params.id, updatedCourse, { new: true })
+  response.json(returnedCourse)
+  // } else {
+  // return response.status(401).json({ error: 'Unauthorized' })
+  //
+})
 
 coursesRouter.delete('/:id', async (request, response) => {
   const returnedCourse = await Course

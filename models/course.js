@@ -13,15 +13,18 @@ const courseSchema = new mongoose.Schema({
     type: String
   },
   expiry: {
-    type: String
+    type: Number
   },
   duration: {
     type: Number
   },
   dateAdded: {
     type: Date,
-    required: true,
-    default: Date.now
+    required: true
+  },
+  dateUpdated: {
+    type: Date,
+    required: true
   },
 })
 
