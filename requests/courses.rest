@@ -1,20 +1,24 @@
 GET http://localhost:3001/api/courses
 ###
+
 GET http://localhost:3001/api/courses/61539fb326e19b29022677f8
 ###
+
 DELETE http://localhost:3001/api/courses/6153a231524bde2ad5bf5b5c
 ###
+
 POST http://localhost:3001/api/courses/
 content-type: application/json
 
 {
-    "name": "Animal Welfare AM/PM",
+    "name": "General H&S Inductidwodwdwwdwdjh",
     "category": "Annual Refresher",
     "provider": "Internal",
     "duration": "30",
     "expiry": "365"
 }
 ###
+
 PUT http://localhost:3001/api/courses/6153a8b3e3e8ae2cf6b00657
 content-type: application/json
 

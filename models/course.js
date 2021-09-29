@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
-const uniqueValidator = require('mongoose-unique-validator')
+// const uniqueValidator = require('mongoose-unique-validator')
 
 const courseSchema = new mongoose.Schema({
   name: {
-    type: String,
-    unique: true
+    type: String
   },
   category: {
     type: String,
@@ -19,16 +18,12 @@ const courseSchema = new mongoose.Schema({
     type: Number
   },
   dateAdded: {
-    type: Date,
-    required: true
+    type: Date
   },
   dateUpdated: {
-    type: Date,
-    required: true
+    type: Date
   },
 })
-
-courseSchema.plugin(uniqueValidator)
 
 courseSchema.set('toJSON', {
   transform: (document, returnedObject) => {
