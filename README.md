@@ -28,7 +28,7 @@
 ## Matrix: match up the positions to the courses those employees need to do
 
 - Course ID
-- Position ID
+- Position ID (Where does SITE go?)
 - Status? or status is based on course/position statuses
 
 ## Records:

@@ -50,8 +50,8 @@ coursesRouter.post('/', async (request, response) => {
 coursesRouter.put('/:id', async (request, response) => {
   const body = request.body
 
-  const courseToUpdate = await Course
-    .findById(request.params.id)
+  // const courseToUpdate = await Course
+  //   .findById(request.params.id)
 
   const updatedCourse = {
     name: body.name,
@@ -67,8 +67,8 @@ coursesRouter.put('/:id', async (request, response) => {
 
 
 coursesRouter.delete('/:id', async (request, response) => {
-  const returnedCourse = await Course
-    .findById(request.params.id)
+  // const returnedCourse = await Course
+  //   .findById(request.params.id)
   await Course.findByIdAndRemove(request.params.id)
   return response.status(204).end()
 })

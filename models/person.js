@@ -6,7 +6,7 @@ const personSchema = new mongoose.Schema({
     type: String,
     unique: true
   },
-  position: {
+  site: {
     type: String
   },
   department: {
@@ -15,9 +15,9 @@ const personSchema = new mongoose.Schema({
   shift: {
     type: String
   },
-  brinksEmpNoOrAgency: {
+  position: {
     type: String
-  },
+  }
 })
 
 personSchema.plugin(uniqueValidator)

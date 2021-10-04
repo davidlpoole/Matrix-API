@@ -1,0 +1,30 @@
+GET http://localhost:3001/api/people
+###
+
+GET http://localhost:3001/api/people/61539fb326e19b29022677f8
+###
+
+DELETE http://localhost:3001/api/people/6154c2d7d1579c6abc3274db
+###
+
+POST http://localhost:3001/api/people/
+content-type: application/json
+
+{
+    "name": "David Poole",
+    "position": "Manual Boning",
+    "site": "MTW",
+    "department": "Production",
+    "shift": "AM"
+}
+###
+
+PUT http://localhost:3001/api/people/6154c2d7d1579c6abc3274db
+content-type: application/json
+
+{
+    "name": "David",
+    "position": "Manual Boning",
+    "department": "Production",
+    "shift": "AM"
+}
