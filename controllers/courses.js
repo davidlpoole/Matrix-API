@@ -14,7 +14,7 @@ coursesRouter.get('/:id', async (request, response) => {
   const returnedCourse = await Course
     .findById(request.params.id)
   if (!returnedCourse) {
-    return response.status(404).end()
+    return response.status(404).send({ error: 'course not found' })
   }
   response.json(returnedCourse)
 })
@@ -33,13 +33,17 @@ coursesRouter.post('/', async (request, response) => {
     dateUpdated: Date.now()
   })
 
-  if (!course.name || !course.category || !course.provider) {
-    return response.status(400).end()
+  if (
+    !course.name ||
+    !course.category ||
+    !course.provider
+  ) {
+    return response.status(400).send({ error: 'a required field is empty' })
   }
 
   const checkDupe = await Course.find({ 'name': course.name })
   if (checkDupe.length !== 0) {
-    return response.status(400).end()
+    return response.status(400).send({ error: 'course name must be unique' })
   }
 
   const addedCourse = await course.save()
@@ -61,15 +65,28 @@ coursesRouter.put('/:id', async (request, response) => {
     duration: body.duration,
     dateUpdated: Date.now()
   }
-  const returnedCourse = await Course.findByIdAndUpdate(request.params.id, updatedCourse, { new: true })
-  response.json(returnedCourse)
+  const returnedCourse = await Course
+    .findByIdAndUpdate(
+      request.params.id,
+      updatedCourse,
+      {
+        new: true,
+        useFindAndModify: false
+      }
+    )
+
+  if (!returnedCourse) {
+    return response.status(404).send({ error: 'course not found' })
+  } else {
+    return response.status(204).json(returnedCourse)
+  }
 })
 
 
 coursesRouter.delete('/:id', async (request, response) => {
   // const returnedCourse = await Course
   //   .findById(request.params.id)
-  await Course.findByIdAndRemove(request.params.id)
+  await Course.findByIdAndDelete(request.params.id)
   return response.status(204).end()
 })
 
