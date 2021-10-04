@@ -15,7 +15,7 @@ const personSchema = new mongoose.Schema({
   },
   position: {
     type: String
-  }
+  },
 })
 
 

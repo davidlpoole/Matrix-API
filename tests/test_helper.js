@@ -1,4 +1,5 @@
 const Course = require('../models/course')
+const Person = require('../models/person')
 
 const initialCourses = [
   {
@@ -21,26 +22,36 @@ const initialCourses = [
   }
 ]
 
-const nonExistingId = async () => {
-  const course = new Course({
-    name: 'Animal Welfare 4',
-    category: 'Annual Refresher',
-    provider: 'Internal',
-    duration: '30',
-    expiry: '365',
-    dateAdded: `${Date.now()}`,
-    dateUpdated: `${Date.now()}`
-  })
-  await course.save()
-  await course.remove()
-
-  return course._id.toString()
-}
-
 const coursesInDb = async () => {
   return courses = await Course.find({})
 }
 
+const initialPeople = [
+  {
+    name: 'David Poole',
+    position: 'Deboner',
+    department: 'Production',
+    shift: 'Night',
+    site: 'MTW',
+    dateAdded: `${Date.now()}`,
+    dateUpdated: `${Date.now()}`
+  },
+  {
+    name: 'James',
+    position: 'Forklift driver',
+    department: 'DC',
+    shift: 'Night',
+    site: 'MTW',
+    dateAdded: `${Date.now()}`,
+    dateUpdated: `${Date.now()}`
+  },
+]
+
+const peopleInDb = async () => {
+  return people = await Person.find({})
+}
+
 module.exports = {
-  initialCourses, nonExistingId, coursesInDb
+  initialCourses, coursesInDb,
+  initialPeople, peopleInDb
 }
