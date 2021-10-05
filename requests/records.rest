@@ -1,0 +1,29 @@
+GET http://localhost:3001/api/records
+###
+
+GET http://localhost:3001/api/records/615b9fde4448fb8e54c7f203
+###
+
+DELETE http://localhost:3001/api/records/615b9fd64448fb8e54c7f200
+###
+
+POST http://localhost:3001/api/records/
+content-type: application/json
+
+{
+    "person": "615ad17ed0e0536f5c9f5549",
+    "course": "615b7ba3db93de82751e6c24",
+    "dateCompleted": "2021-10-05"
+}
+###
+
+PUT http://localhost:3001/api/records/615b7ba3db93de82751e6c24
+content-type: application/json
+
+{
+    "name": "Animal Welfare AM/PM",
+    "category": "Annual Refresher",
+    "provider": "Internal",
+    "duration": "90",
+    "expiry": "365"
+}

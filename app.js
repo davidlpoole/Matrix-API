@@ -9,6 +9,7 @@ const mongoose = require('mongoose')
 
 const coursesRouter = require('./controllers/courses')
 const peopleRouter = require('./controllers/people')
+const recordsRouter = require('./controllers/records')
 
 logger.info('connecting to', config.MONGODB_URI)
 
@@ -33,6 +34,7 @@ app.use(middleware.tokenExtractor)
 
 app.use('/api/courses', coursesRouter)
 app.use('/api/people', peopleRouter)
+app.use('/api/records', recordsRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)

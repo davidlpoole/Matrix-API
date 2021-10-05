@@ -27,7 +27,7 @@ peopleRouter.post('/', async (request, response) => {
     name: body.name,
     position: body.position,
     department: body.department,
-    shift: body.shift,
+    shift: body.shift || null,
     site: body.site,
     dateAdded: Date.now(),
     dateUpdated: Date.now()
@@ -55,8 +55,14 @@ peopleRouter.post('/', async (request, response) => {
 peopleRouter.put('/:id', async (request, response) => {
   const body = request.body
 
-  // const personToUpdate = await Person
-  //   .findById(request.params.id)
+  if (
+    !body.name ||
+    !body.position ||
+    !body.department ||
+    !body.site
+  ) {
+    return response.status(400).send({ error: 'a required field is empty' })
+  }
 
   const updatedPerson = {
     name: body.name,

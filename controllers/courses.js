@@ -28,7 +28,7 @@ coursesRouter.post('/', async (request, response) => {
     category: body.category,
     provider: body.provider,
     expiry: body.expiry || null,
-    duration: body.duration,
+    duration: body.duration || null,
     dateAdded: Date.now(),
     dateUpdated: Date.now()
   })
@@ -54,15 +54,20 @@ coursesRouter.post('/', async (request, response) => {
 coursesRouter.put('/:id', async (request, response) => {
   const body = request.body
 
-  // const courseToUpdate = await Course
-  //   .findById(request.params.id)
+  if (
+    !body.name ||
+    !body.category ||
+    !body.provider
+  ) {
+    return response.status(400).send({ error: 'a required field is empty' })
+  }
 
   const updatedCourse = {
     name: body.name,
     category: body.category,
     provider: body.provider,
     expiry: body.expiry || null,
-    duration: body.duration,
+    duration: body.duration || null,
     dateUpdated: Date.now()
   }
   const returnedCourse = await Course

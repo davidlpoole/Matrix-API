@@ -2,17 +2,17 @@ const mongoose = require('mongoose')
 const uniqueValidator = require('mongoose-unique-validator')
 
 const matrixSchema = new mongoose.Schema({
-  course:
-  {
+  person: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Person'
+  },
+  course: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Course'
   },
-  position:
-  {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Position'
-  }
-
+  dateCompleted: { type: String },
+  dateAdded: { type: Date },
+  dateUpdated: { type: Date },
 })
 
 matrixSchema.plugin(uniqueValidator)

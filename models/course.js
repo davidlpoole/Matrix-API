@@ -1,27 +1,13 @@
 const mongoose = require('mongoose')
 
 const courseSchema = new mongoose.Schema({
-  name: {
-    type: String
-  },
-  category: {
-    type: String,
-  },
-  provider: {
-    type: String
-  },
-  expiry: {
-    type: Number
-  },
-  duration: {
-    type: Number
-  },
-  dateAdded: {
-    type: Date
-  },
-  dateUpdated: {
-    type: Date
-  },
+  name: { type: String },
+  category: { type: String, },
+  provider: { type: String },
+  expiry: { type: Number },
+  duration: { type: Number },
+  dateAdded: { type: Date },
+  dateUpdated: { type: Date },
 })
 
 courseSchema.set('toJSON', {
