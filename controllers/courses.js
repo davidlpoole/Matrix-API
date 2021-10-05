@@ -83,7 +83,7 @@ coursesRouter.put('/:id', async (request, response) => {
   if (!returnedCourse) {
     return response.status(404).send({ error: 'course not found' })
   } else {
-    return response.status(204).json(returnedCourse)
+    return response.status(202).json(returnedCourse)
   }
 })
 

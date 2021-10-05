@@ -85,7 +85,7 @@ peopleRouter.put('/:id', async (request, response) => {
   if (!returnedPerson) {
     return response.status(404).send({ error: 'person not found' })
   } else {
-    return response.status(204).json(returnedPerson)
+    return response.status(202).json(returnedPerson)
   }
 })
 

@@ -13,6 +13,7 @@ beforeEach(async () => {
 
   personObject2 = new Person(helper.initialPeople[1])
   await personObject2.save()
+
 })
 
 describe('GET', () => {
@@ -176,7 +177,7 @@ describe('PUT', () => {
     await api
       .put(`/api/people/${personToUpdate._id}`)
       .send(updatedPerson)
-      .expect(204)
+      .expect(202)
 
     const response = await api
       .get('/api/people')

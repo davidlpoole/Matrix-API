@@ -1,5 +1,6 @@
 const Course = require('../models/course')
 const Person = require('../models/person')
+const Record = require('../models/record')
 
 const initialCourses = [
   {
@@ -51,7 +52,12 @@ const peopleInDb = async () => {
   return people = await Person.find({})
 }
 
+const recordsInDb = async () => {
+  return records = await Record.find({})
+}
+
 module.exports = {
   initialCourses, coursesInDb,
-  initialPeople, peopleInDb
+  initialPeople, peopleInDb,
+  recordsInDb
 }

@@ -50,9 +50,9 @@ recordsRouter.put('/:id', async (request, response) => {
   const body = request.body
 
   if (
-    !record.person ||
-    !record.course ||
-    !record.dateCompleted
+    !body.person ||
+    !body.course ||
+    !body.dateCompleted
   ) {
     return response.status(400).send({ error: 'a required field is empty' })
   }
@@ -76,7 +76,7 @@ recordsRouter.put('/:id', async (request, response) => {
   if (!returnedRecord) {
     return response.status(404).send({ error: 'record not found' })
   } else {
-    return response.status(204).json(returnedRecord)
+    return response.status(200).json(returnedRecord)
   }
 })
 

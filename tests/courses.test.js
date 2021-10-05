@@ -164,7 +164,7 @@ describe('PUT', () => {
     await api
       .put(`/api/courses/${courseToUpdate._id}`)
       .send(updatedCourse)
-      .expect(204)
+      .expect(202)
 
     const response = await api
       .get('/api/courses')
